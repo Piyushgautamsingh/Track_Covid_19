@@ -4,24 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#FFFFE0"
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
-        android:layout_width="305dp"
-        android:layout_height="532dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="138dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Coronavirus COVID-19\nGlobal Cases"
             android:textAlignment="center"
-            android:textColor="#fff"
+            android:textColor="#000000"
             android:textSize="24dp" />
 
         <TextView
@@ -30,30 +30,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Confirmed"
-            android:textColor="#fff" />
+            android:textColor="#000000"
+            android:textSize="15dp"/>
 
         <TextView
             android:id="@+id/tvTotalConfirmed"
             style="@style/TotalFontStyle"
-            android:layout_width="137dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#0FB9E4"
+            android:textColor="@color/colorTotalConfirmed"
             tools:text="162387" />
 
         <TextView
             android:id="@+id/tvLabelTotalDeaths"
             style="@style/LabelFontStyle"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Deaths"
-            android:textColor="#F2FFFFFF" />
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/tvTotalDeaths"
             style="@style/TotalFontStyle"
-            android:layout_width="136dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FF0606"
+            android:textColor="@color/colorTotalDeaths"
             tools:text="75648" />
 
         <TextView
@@ -62,14 +63,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Recovered"
-            android:textColor="#FFFFFF" />
+            android:textColor="#000000"
+            android:textSize="15dp"/>
 
         <TextView
             android:id="@+id/tvTotalRecovered"
             style="@style/TotalFontStyle"
-            android:layout_width="133dp"
-            android:layout_height="55dp"
-            android:textColor="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTotalRecovered"
             tools:text="75938" />
 
         <TextView
@@ -79,8 +81,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textAlignment="center"
-            android:textColor="#fff"
-            tools:text="Last Updated\n Mon, 23 Mar 2020 1:20:30 PM" />
+            android:textColor="#000000"
+            tools:text="Last Updated\n Mon, 23 Mar 2020 1:20:30 PM"
+            android:textSize="15dp"/>
 
     </LinearLayout>
 
