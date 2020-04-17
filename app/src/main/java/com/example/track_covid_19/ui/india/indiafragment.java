@@ -1,4 +1,4 @@
-package com.example.track_covid_19.ui.country;
+package com.example.track_covid_19.ui.india;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,33 +34,32 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountryFragment extends Fragment {
-
-    RecyclerView rvCovidCountry;
+public class indiafragment extends Fragment {
+    RecyclerView rvindia_state;
     ProgressBar progressBar;
-    CovidCountryAdapter covidCountryAdapter;
+    stateadapter stateadapter;
 
-    private static final String TAG = CountryFragment.class.getSimpleName();
-    List<CovidCountry> covidCountries;
+    private static final String TAG = indiafragment.class.getSimpleName();
+    List<india_state> states;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_country, container, false);
+        View root = inflater.inflate(R.layout.states, container, false);
 
         // set has option menu as true because we have menu
         setHasOptionsMenu(true);
 
         // call view
-        rvCovidCountry = root.findViewById(R.id.rvCovidCountry);
+        rvindia_state = root.findViewById(R.id.rvindia_state);
         progressBar = root.findViewById(R.id.progress_circular_country);
-        rvCovidCountry.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rvindia_state.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvCovidCountry.getContext(), DividerItemDecoration.VERTICAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvindia_state.getContext(), DividerItemDecoration.VERTICAL);
         dividerItemDecoration.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.line_divider));
-        rvCovidCountry.addItemDecoration(dividerItemDecoration);
+        rvindia_state.addItemDecoration(dividerItemDecoration);
 
         //call list
-        covidCountries = new ArrayList<>();
+        states = new ArrayList<>();
 
         // call Volley method
         getDataFromServer();
@@ -69,25 +68,25 @@ public class CountryFragment extends Fragment {
     }
 
     private void showRecyclerView() {
-        covidCountryAdapter = new CovidCountryAdapter(covidCountries, getActivity());
-        rvCovidCountry.setAdapter(covidCountryAdapter);
+       stateadapter = new stateadapter(states, getActivity());
+        rvindia_state.setAdapter(stateadapter);
 
-        ItemClickSupport.addTo(rvCovidCountry).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+        ItemClickSupport_i.addTo(rvindia_state).setOnItemClickListener(new ItemClickSupport_i.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                showSelectedCovidCountry(covidCountries.get(position));
+                showSelectedindian_states(states.get(position));
             }
         });
     }
 
-    private void showSelectedCovidCountry(CovidCountry covidCountry) {
-        Intent covidCovidCountryDetail = new Intent(getActivity(), CovidCountryDetail.class);
-        covidCovidCountryDetail.putExtra("EXTRA_COVID", covidCountry);
-        startActivity(covidCovidCountryDetail);
+    private void showSelectedindian_states(india_state indian_state) {
+        Intent states_details = new Intent(getActivity(), states_details.class);
+        states_details.putExtra("EXTRA_COVID", indian_state);
+        startActivity(states_details);
     }
 
     private void getDataFromServer() {
-        String url = "https://corona.lmao.ninja/v2/countries";
+        String url = "https://api.covid19india.org/data.json";
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -101,20 +100,19 @@ public class CountryFragment extends Fragment {
                             JSONObject data = jsonArray.getJSONObject(i);
 
                             // Extract JSONObject inside JSONObject
-                            JSONObject countryInfo = data.getJSONObject("countryInfo");
+                            JSONObject statecode = data.getJSONObject("statecode");
 
-                            covidCountries.add(new CovidCountry(
-                                    data.getString("country"), data.getString("cases"),
-                                    data.getString("todayCases"), data.getString("deaths"),
-                                    data.getString("todayDeaths"), data.getString("recovered"),
-                                    data.getString("active"), data.getString("critical"),
-                                    countryInfo.getString("flag")
+
+                            states.add(new india_state(
+                                    data.getString("state"), data.getString("confirmed"),
+                                    data.getString("deaths"), data.getString("recovered")
+
                             ));
                         }
-//                        tvTotalCountry.setText(jsonArray.length()+" countries");
+
 
                         // Action Bar Title
-                        getActivity().setTitle(jsonArray.length()+" countries");
+                        getActivity().setTitle(jsonArray.length()+"states");
 
                         showRecyclerView();
                     } catch (JSONException e) {
@@ -148,8 +146,8 @@ public class CountryFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (covidCountryAdapter != null) {
-                    covidCountryAdapter.getFilter().filter(newText);
+                if (stateadapter != null) {
+                    stateadapter.getFilter().filter(newText);
                 }
                 return true;
             }

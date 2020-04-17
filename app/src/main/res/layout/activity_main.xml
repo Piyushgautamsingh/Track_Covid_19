@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
@@ -12,11 +13,11 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/colorPrimaryDark"
         app:itemTextAppearanceActive="@style/BottomNavigationView"
         app:itemTextAppearanceInactive="@style/BottomNavigationView"
         app:menu="@menu/bottom_nav_menu" />
-
 
     <fragment
         android:id="@+id/nav_host_fragment"

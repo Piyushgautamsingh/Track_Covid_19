@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#4169E1</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorcounrty">#000000</color>
+
     <color name="colorTotalConfirmed">#4169E1</color>
     <color name="colorTotalDeaths">#FF0000</color>
     <color name="colorTotalRecovered">#7bb974</color>

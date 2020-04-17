@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">TrackCovid19</string>
+    <string name="title_web">Web</string>
+    <string name="title_india">India</string>
+    <string name="title_State">States</string>
     <string name="title_home">Home</string>
     <string name="title_country">Country</string>
 </resources>

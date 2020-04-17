@@ -6,6 +6,11 @@
     app:startDestination="@+id/navigation_home">
 
     <fragment
+        android:id="@+id/navigation_india"
+        android:name="com.example.track_covid_19.ui.india.indiafragment"
+        android:label="@string/title_india"
+        tools:layout="@layout/states" />
+    <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.track_covid_19.ui.home.HomeFragment"
         android:label="@string/title_home"
@@ -16,5 +21,7 @@
         android:name="com.example.track_covid_19.ui.country.CountryFragment"
         android:label="@string/title_country"
         tools:layout="@layout/fragment_country" />
+
+
 
 </navigation>
