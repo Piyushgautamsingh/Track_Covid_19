@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/hlogo"
     android:gravity="center"
     tools:context=".ui.country.CovidCountryDetail">
 
@@ -39,7 +39,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/LabelFontStyle"
+                style="@style/TotalFontStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Cases"
@@ -65,7 +65,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/LabelFontStyle"
+                style="@style/TotalFontStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Today Cases"
@@ -100,7 +100,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/LabelFontStyle"
+                style="@style/TotalFontStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Deaths"
@@ -126,7 +126,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/LabelFontStyle"
+                style="@style/TotalFontStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Today Deaths"
@@ -161,7 +161,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/LabelFontStyle"
+                style="@style/TotalFontStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Recovered"
@@ -196,7 +196,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/LabelFontStyle"
+                style="@style/TotalFontStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Active"
@@ -222,7 +222,7 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/LabelFontStyle"
+                style="@style/TotalFontStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Critical"

@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.track_covid_19.R;
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -51,7 +53,7 @@ public class indiafragment extends Fragment {
 
         // call view
         rvindia_state = root.findViewById(R.id.rvindia_state);
-        progressBar = root.findViewById(R.id.progress_circular_country);
+        progressBar = root.findViewById(R.id.progress_circular_states);
         rvindia_state.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rvindia_state.getContext(), DividerItemDecoration.VERTICAL);
@@ -81,47 +83,37 @@ public class indiafragment extends Fragment {
 
     private void showSelectedindian_states(india_state indian_state) {
         Intent states_details = new Intent(getActivity(), states_details.class);
-        states_details.putExtra("EXTRA_COVID", indian_state);
+        states_details.putExtra("EXTRA_COVID_S", indian_state);
         startActivity(states_details);
     }
 
     private void getDataFromServer() {
         String url = "https://api.covid19india.org/data.json";
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url, null,new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
-                progressBar.setVisibility(View.GONE);
-                if (response != null) {
-                    Log.e(TAG, "onResponse: " + response);
-                    try {
-                        JSONArray jsonArray = new JSONArray(response);
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject data = jsonArray.getJSONObject(i);
+            public void onResponse( JSONObject response) {
+                    progressBar.setVisibility(View.GONE);
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("statewise");
 
-                            // Extract JSONObject inside JSONObject
-                            JSONObject statecode = data.getJSONObject("statecode");
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject data = jsonArray.getJSONObject(i);
+                                  states.add(new india_state(
+                                        data.getString("state"), data.getString("confirmed"),
+                                        data.getString("deaths"), data.getString("recovered"),
+                                          data.getString("active")));
 
-
-                            states.add(new india_state(
-                                    data.getString("state"), data.getString("confirmed"),
-                                    data.getString("deaths"), data.getString("recovered")
-
-                            ));
                         }
-
-
                         // Action Bar Title
-                        getActivity().setTitle(jsonArray.length()+"states");
+                        getActivity().setTitle(jsonArray.length() + "states");
 
                         showRecyclerView();
-                    } catch (JSONException e) {
+                    } catch(JSONException e){
                         e.printStackTrace();
                     }
                 }
-            }
-        },
-                new Response.ErrorListener() {
+            },new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressBar.setVisibility(View.GONE);

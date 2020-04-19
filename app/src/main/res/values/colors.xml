@@ -8,4 +8,5 @@
     <color name="colorTotalConfirmed">#4169E1</color>
     <color name="colorTotalDeaths">#FF0000</color>
     <color name="colorTotalRecovered">#7bb974</color>
+    <color name="background">#F8F9F9 </color>
 </resources>

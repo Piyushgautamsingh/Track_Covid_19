@@ -41,9 +41,9 @@ public class stateadapter extends RecyclerView.Adapter<stateadapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull stateadapter.ViewHolder holder, int position) {
-        india_state india_state= states.get(position);
-        holder.tvTotalCases.setText(india_state.getmCases());
-        holder.tvstateName.setText(india_state.getmindia_state());
+        india_state india_state1= states.get(position);
+        holder.tvTotalCases.setText(india_state1.getmCases());
+        holder.tvstateName.setText(india_state1.getmindia_state());
     }
 
     @Override

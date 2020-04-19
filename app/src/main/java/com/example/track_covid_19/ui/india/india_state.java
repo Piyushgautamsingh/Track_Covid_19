@@ -4,12 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class india_state implements Parcelable {
-    String mindia_state, mCases, mDeaths, mRecovered;
-    public india_state(String mindia_state, String mCases,String mDeaths, String mRecovered) {
-        this.mindia_state = mindia_state;
-        this.mCases = mCases;
+    String mindia_state, mCases, mDeaths, mRecovered,mactive;
+    public india_state(String state, String confirmed, String mDeaths, String mRecovered,String mactive) {
+        this.mindia_state = state;
+        this.mCases = confirmed;
         this.mDeaths = mDeaths;
         this.mRecovered = mRecovered;
+        this.mactive=mactive;
      }
 
     public String getmindia_state() {
@@ -28,6 +29,10 @@ public class india_state implements Parcelable {
         return mRecovered;
     }
 
+    public String getmactive() {
+        return mactive;
+    }
+
 
     @Override
     public int describeContents() {
@@ -40,6 +45,7 @@ public class india_state implements Parcelable {
         dest.writeString(this.mCases);
         dest.writeString(this.mDeaths);
         dest.writeString(this.mRecovered);
+        dest.writeString(this.mactive);
     }
 
     protected india_state(Parcel in) {
@@ -47,6 +53,7 @@ public class india_state implements Parcelable {
         this.mCases = in.readString();
         this.mDeaths = in.readString();
         this.mRecovered = in.readString();
+        this.mactive= in.readString();
     }
 
     public static final Creator<com.example.track_covid_19.ui.india.india_state> CREATOR = new Creator<com.example.track_covid_19.ui.india.india_state>() {
